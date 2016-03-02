@@ -92,3 +92,39 @@ float Q3(float *a, int n)
 
 	
 	}
+int main()
+	{
+		int n;
+		float *s;
+		cin >> n;
+		s = new float[n];
+
+		for (int i = 0; i < n; i++)
+		{
+			cin >> s[i];
+		}
+
+	
+				      order(s, n);
+		cout <<"min ="<< min(s)<<"\n";
+		cout <<"Qurtile 1 ="<< Q1(s, n)<<"\n";
+		cout << "Median ="<<median(s, n)<<"\n";
+		cout << "Quartile 3 =" << Q3(s, n); cout << "\n";
+	    cout<<"Max ="<< max(s, n)<<"\n";
+		int j;
+		float *x = out(s, n, j);
+		if ((j != 0))
+		{
+			for (int i = 0; i < j; i++)
+			{
+				cout << x[i] << ",";
+			}
+		}
+		else
+		{
+			cout << "there are not outlier";
+		}
+		delete[]s;
+		getch();
+		return 0;
+	}

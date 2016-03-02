@@ -23,3 +23,26 @@ for (i = 1; i<n; i++)
 	a[j + 1] = temp;
 }
 }
+float max(float *a,int n)
+{
+	return a[n - 1];
+}
+float min(float *a)
+{
+	return a[0];
+}
+float median(float *a, int n)
+{
+	float y;
+	if (n % 2 != 0)
+	{
+
+		y = a[int(n / 2)];
+	}
+	else if (n%2==0)
+	{
+		y = (a[(n / 2)-1] + a[n / 2]) / 2;
+	}
+	
+	return y;
+}

@@ -46,3 +46,49 @@ float median(float *a, int n)
 	
 	return y;
 }
+float Q1(float *a, int n)
+{
+	return median(a, n / 2);
+}
+float Q3(float *a, int n)
+{
+	float *h = new float[n / 2];
+	for (int i = 0; i < n / 2; i++)
+	{
+		if (n % 2 == 1)
+		{
+			h[i] = a[i + int(n / 2) + 1];
+		}
+		else if (n % 2 == 0)
+		{
+			h[i] = a[i + n / 2];
+		}
+	
+	}
+	return median(h, n / 2);
+}
+	float *out(float *a,int  n,int & h)
+	{
+		float * outlier=new float[n];
+		int p = 0;
+		float g = 1.5*(Q3(a, n) - Q1(a, n));
+		float y = Q1(a, n) - g;
+		float t = Q3(a, n) + float(1.5*(Q3(a, n) - Q1(a, n)));
+		
+		for (int i = 0; i < n; i++)
+
+		{
+			if (a[i] > t || a[i] < y)
+			{
+				outlier[p] = a[i];
+				p++;
+
+			}
+			
+
+		}
+		h = p;
+		return outlier ;
+
+	
+	}
